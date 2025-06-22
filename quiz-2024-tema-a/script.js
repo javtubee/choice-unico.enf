@@ -19,12 +19,15 @@ function mostrarPregunta() {
       const idx = parseInt(label.dataset.index);
       const correcta = q.correcta;
 
+      // Evitar seleccionar más de una vez
       if (answered[current]) return;
 
+      // Remover estilos anteriores
       document.querySelectorAll('.options label').forEach(l => {
         l.classList.remove('correct', 'wrong');
       });
 
+      // Aplicar feedback
       if (idx === correcta) {
         label.classList.add('correct');
         score++;
@@ -33,7 +36,7 @@ function mostrarPregunta() {
         document.querySelectorAll('.options label')[correcta].classList.add('correct');
       }
 
-      answered[current] = true;
+      answered[current] = true; // Marcar que ya se respondió
     });
   });
 }
